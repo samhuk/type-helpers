@@ -5,5 +5,4 @@
  * E.g. `import { createPackageName, PackageNameOptions } from 'npm-package-name`
  */
 
-export { createPackageName } from './package-name'
 export * from './types'

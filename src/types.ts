@@ -2,7 +2,27 @@
  * This file defines all of the types that will be available in the public API
  * of the package.
  *
- * E.g. `import { PackageNameOptions } from 'npm-package-name`
+ * E.g. `import { PackageNameOptions } from 'type-helpers`
  */
 
-export type { PackageName, PackageNameOptions } from './package-name/types'
+export type {
+  Access,
+  ArrayTernary,
+  Cast,
+  DeepMutable,
+  DeepReadonly,
+  DeepReadonlyOrMutable,
+  Dict,
+  DictValues,
+  ExpandOneLevel,
+  ExpandRecursively,
+  ExpandRecursivelyWithAdditionalLeafNodes,
+  IsAny,
+  Mutable,
+  OmitTyped,
+  PickAny,
+  ReadonlyOrMutable,
+  StringKeysOf,
+  TypeDependantBase,
+  TypeDependantBaseIntersection,
+} from './type-helpers/types'
