@@ -148,13 +148,25 @@ export type DictValues<TDict> = TDict[keyof TDict]
  */
 export type ArrayTernary<T, TIsArray extends boolean> = TIsArray extends false ? T : T[]
 
-type IfAny<T, Y, N> = 0 extends (1 & T) ? Y : N
-
 /**
  * Determines if `T` is `any`. This uses a rather strange Typescript workaround, exploiting
  * the strange nature of `any`.
  */
-export type IsAny<T> = IfAny<T, true, false>
+export type IsAny<T> = 0 extends (1 & T) ? true : false
+
+/**
+ * Determines if `T` is `boolean`, i.e. is not explicitly `true` or `false`.
+ *
+ * @example
+ * IsTrueAndFalse<true> // false
+ * IsTrueAndFalse<false> // false
+ * IsTrueAndFalse<boolean> // true
+ */
+export type IsTrueAndFalse<T extends boolean> = true extends T
+  ? (false extends T
+    ? true
+    : false
+  ) : false
 
 /**
  * Version of `keyof` that ensures they are all strings.
