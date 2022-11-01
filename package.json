@@ -1,6 +1,6 @@
 {
   "name": "@samhuk/type-helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Useful Common Typescript Types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
