@@ -51,6 +51,45 @@ export type TypeDependantBaseIntersection<
 }[TType] & { [k in TTypePropertyName]: TSpecificEnumType }
 
 /**
+ * Alias for `TypeDependantBaseIntersection`.
+ */
+export type EnumDependant<
+  TType extends string|number,
+  TMap extends { [k in TType]: any },
+  TSpecificEnumType extends string|number = TType,
+  TTypePropertyName extends string = 'type',
+> = TypeDependantBaseIntersection<
+  TType, TMap, TSpecificEnumType, TTypePropertyName
+>
+
+/**
+ * For creating a type that has a boolean property that determines
+ * what other properties are visible.
+ *
+ * @example
+ * type LoginResult<TSuccess extends boolean = boolean> = BoolDependant<
+ *   {
+ *     'true': { user: ... },
+ *     'false': { failReason: ... },
+ *   },
+ *   TSuccess,
+ *   'success'
+ * >
+ *
+ * const loginResult: LoginResult = {
+ *   success: true,
+ *   user: ...
+ * }
+ */
+export type BoolDependant<
+  TMap extends { [k in `${boolean}`]: any },
+  TSpecificEnumType extends boolean = boolean,
+  TTypePropertyName extends string = 'type'
+> = {
+  [K in `${boolean}`]: { [k in TTypePropertyName]: K extends 'true' ? true : false } & TMap[K]
+}[`${boolean}`] & { [k in TTypePropertyName]: TSpecificEnumType }
+
+/**
  * Removes all of the `readonly` status of all the properties within `T`.
  */
 export type Mutable<T> = { -readonly [K in keyof T]: T[K] }

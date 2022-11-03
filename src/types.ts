@@ -25,4 +25,6 @@ export type {
   StringKeysOf,
   TypeDependantBase,
   TypeDependantBaseIntersection,
+  BoolDependant,
+  EnumDependant,
 } from './type-helpers/types'
